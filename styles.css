@@ -1,0 +1,124 @@
+/* Across Pacifica — styles.css
+   Dynamic & adventurous ocean theme — responsive, animated hero waves.
+*/
+
+:root{
+  --deep-pacific: #003366;
+  --turquoise: #00a3d6;
+  --coral: #ff6666;
+  --foam: #fefefe;
+  --navy: #001f33;
+  --max-width: 1200px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--navy);
+  background: linear-gradient(180deg, #eaf6ff 0%, #fff 30%);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Container */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* Header / Nav */
+.site-header{position:relative; z-index:20}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 0;
+  transition:backdrop-filter .2s ease;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{height:44px;width:auto;display:block}
+.site-title{font-family:Poppins, sans-serif;font-weight:700;letter-spacing:1px;color:var(--deep-pacific);display:none}
+
+/* Nav links */
+.nav-links{list-style:none;display:flex;gap:18px;align-items:center;margin:0;padding:0}
+.nav-links a{color:var(--deep-pacific);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;transition:all .22s ease}
+.nav-links a:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+nav .cta{background:linear-gradient(90deg,var(--turquoise),var(--coral));color:white;padding:8px 14px}
+
+/* mobile nav toggle */
+.nav-toggle{display:none;background:transparent;border:0;font-size:20px}
+
+/* Hero */
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding-bottom:60px;
+  background:linear-gradient(160deg, rgba(0,51,102,0.95) 0%, rgba(0,163,214,0.85) 60%, rgba(255,102,102,0.06) 100%);
+  color:var(--foam);
+  clip-path:ellipse(100% 90% at 50% 0%);
+}
+.hero-inner{display:flex;align-items:center;justify-content:space-between;padding:60px 0;gap:20px}
+.hero-left{max-width:640px}
+.hero-logo{height:90px;margin-bottom:6px}
+.hero h1{font-family:Poppins, sans-serif;font-size:44px;margin:6px 0 12px;line-height:1.02}
+.tagline{font-size:18px;margin-bottom:18px;opacity:0.95}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--turquoise),var(--coral));color:white}
+.btn.ghost{background:transparent;color:var(--foam);border:1px solid rgba(255,255,255,0.22)}
+
+/* Hero right card */
+.hero-right{display:flex;align-items:center;justify-content:center}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));border-radius:14px;padding:22px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,0.12);width:260px}
+
+/* Waves */
+.waves{position:absolute;bottom:-1px;left:0;right:0;height:220px;pointer-events:none}
+.wave{position:absolute;left:0;right:0;width:100%;height:220px}
+.wave path{fill:transparent;stroke:rgba(255,255,255,0.22);stroke-width:6;stroke-linejoin:round}
+.wave1{opacity:0.55;transform:translateY(10px);animation:moveWave 9s linear infinite}
+.wave2{opacity:0.42;transform:translateY(26px);animation:moveWave 12s linear infinite reverse}
+.wave3{opacity:0.28;transform:translateY(40px);animation:moveWave 14s linear infinite}
+
+/* wave motion */
+@keyframes moveWave{
+  0%{transform:translateX(0) translateY(var(--y,0))}
+  50%{transform:translateX(-8%) translateY(calc(var(--y,0) + 6px))}
+  100%{transform:translateX(0) translateY(var(--y,0))}
+}
+
+/* Featured cards */
+.featured{padding:48px 0}
+.featured h2{font-family:Poppins, sans-serif;color:var(--deep-pacific);margin-bottom:18px}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,18,34,0.06);display:flex;flex-direction:column}
+.card-media{height:180px;background-size:cover;background-position:center}
+.card-content{padding:20px}
+.card-content h3{margin:0 0 8px;font-size:18px}
+.card .meta{font-size:13px;color:#6b7b86;margin-bottom:10px}
+.read-more{display:inline-block;margin-top:10px;color:var(--deep-pacific);text-decoration:none;font-weight:600}
+
+/* About */
+.about{padding:36px 0}
+
+/* Footer */
+.site-footer{background:var(--navy);color:rgba(255,255,255,0.9);position:relative;padding-top:40px}
+.footer-waves svg{display:block;width:100%;height:60px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
+.footer-logo{height:44px}
+.socials a{display:inline-block;margin-left:12px;color:rgba(255,255,255,0.9);text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px}
+
+/* Responsive */
+@media(max-width:980px){
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{flex-direction:column;align-items:flex-start;padding:36px 0}
+  .hero-right{margin-top:20px}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .site-title{display:inline-block}
+  .card-grid{grid-template-columns:1fr}
+  .hero h1{font-size:34px}
+  .hero-logo{height:64px}
+}
